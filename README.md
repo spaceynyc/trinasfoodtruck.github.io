@@ -25,7 +25,7 @@ This is a single-page website showcasing Trina's food truck menu, locations, and
 ## Project Structure
 
 ```
-trinas-food-truck/
+trinasfoodtruck.github.io/
 ├── css/
 │   └── styles.css         # Main stylesheet
 ├── img/                   # Image directory (add your images here)
