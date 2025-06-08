@@ -9,7 +9,7 @@ This is a single-page website showcasing Trina's food truck menu, locations, and
 - HTML5
 - CSS3 (with responsive design)
 - Vanilla JavaScript
-- In-memory JavaScript object database
+- Menu data loaded from a local JSON file
 
 ## Features
 
@@ -32,7 +32,8 @@ trinasfoodtruck.github.io/
 │   └── placeholder.txt    # Information about placeholder images
 ├── js/
 │   ├── app.js             # Main application logic
-│   └── database.js        # In-memory database for menu items and schedule
+│   └── database.js        # In-memory database for schedule and special item
+├── menu.json              # Menu data loaded by the site
 ├── index.html             # Main HTML file
 └── README.md              # This documentation file
 ```
@@ -49,7 +50,7 @@ No build process or server is required as this is a static website.
 
 ### Menu Items
 
-Edit the `menuItems` array in `js/database.js` to update the menu items, prices, and descriptions.
+Edit `menu.json` to update the menu items, prices, and descriptions.
 
 ### Special Item
 
