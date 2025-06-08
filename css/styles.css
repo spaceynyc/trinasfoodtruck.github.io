@@ -318,6 +318,17 @@ nav {
     margin: 0 auto;
 }
 
+.loading,
+.error {
+    padding: 2rem;
+    text-align: center;
+    font-family: var(--font-main);
+}
+
+.error {
+    color: var(--primary-color);
+}
+
 .category-items {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));

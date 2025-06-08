@@ -109,50 +109,67 @@ function initNavigation() {
 }
 
 // Load menu items from database
-function loadMenuItems() {
+async function loadMenuItems() {
     const menuContainer = document.getElementById('menu-items');
-    
-    // Clear container
+
+    // Show loading state
+    menuContainer.innerHTML = '<p class="loading">Loading menu…</p>';
+
+    try {
+        const response = await fetch('menu.json');
+        const data = await response.json();
+        menuItems = data.menuItems;
+        renderMenu(menuItems);
+    } catch (err) {
+        console.error('Error loading menu:', err);
+        menuContainer.innerHTML = '<p class="error">Failed to load menu.</p>';
+    }
+}
+
+function renderMenu(items) {
+    const menuContainer = document.getElementById('menu-items');
     menuContainer.innerHTML = '';
-    
+
     // Create category headers
     const categories = {
-        signature: "Signature Sandwiches",
-        sides: "Sides",
-        drinks: "Beverages"
+        signature: 'Signature Sandwiches',
+        sides: 'Sides',
+        drinks: 'Beverages'
     };
-    
+
     // Create containers for each category
     for (const [key, value] of Object.entries(categories)) {
         const categorySection = document.createElement('div');
         categorySection.className = 'menu-category';
         categorySection.setAttribute('data-category', key);
-        
+
         // Set active class for the first category (signature sandwiches)
         if (key === 'signature') {
             categorySection.classList.add('active');
         }
-        
+
         const categoryHeader = document.createElement('h3');
         categoryHeader.className = 'category-header';
         categoryHeader.textContent = value;
-        
+
         const categoryItems = document.createElement('div');
         categoryItems.className = 'category-items';
         categoryItems.id = `category-${key}`;
-        
+
         categorySection.appendChild(categoryHeader);
         categorySection.appendChild(categoryItems);
         menuContainer.appendChild(categorySection);
     }
-    
+
     // Add menu items to their respective categories
-    menuItems.forEach(item => {
+    items.forEach(item => {
         const itemElement = createMenuItemElement(item);
         const categoryContainer = document.getElementById(`category-${item.category}`);
-        categoryContainer.appendChild(itemElement);
+        if (categoryContainer) {
+            categoryContainer.appendChild(itemElement);
+        }
     });
-    
+
     // Set up menu tab click handlers
     setupMenuTabs();
 }
