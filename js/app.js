@@ -3,6 +3,9 @@
 document.addEventListener('DOMContentLoaded', () => {
     // Initialize navigation
     initNavigation();
+
+    // Initialize theme toggle
+    initTheme();
     
     // Load menu items
     loadMenuItems();
@@ -473,4 +476,29 @@ function initScrollAnimations() {
             staggerObserver.observe(element);
         });
     }, 300);
+}
+
+// Theme toggle handling
+function initTheme() {
+    const toggle = document.querySelector('.theme-toggle');
+    if (!toggle) return;
+
+    const stored = localStorage.getItem('theme');
+    if (stored === 'dark') {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        toggle.innerHTML = '<i class="fas fa-sun"></i>';
+    }
+
+    toggle.addEventListener('click', () => {
+        const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+        if (isDark) {
+            document.documentElement.removeAttribute('data-theme');
+            localStorage.removeItem('theme');
+            toggle.innerHTML = '<i class="fas fa-moon"></i>';
+        } else {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            localStorage.setItem('theme', 'dark');
+            toggle.innerHTML = '<i class="fas fa-sun"></i>';
+        }
+    });
 }
