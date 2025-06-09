@@ -40,14 +40,31 @@ html[data-theme='dark'] body {
     color: var(--dark-color);
 }
 
-html[data-theme='dark'] .nav-links a,
-html[data-theme='dark'] .theme-toggle {
+
+html[data-theme='light'] {
+    --primary-color: #C30101;
+    --secondary-color: #FFD454;
+    --accent-color: #FFD454;
+    --highlight-color: #FFDE7D;
+    --light-color: #f8f8f8;
+    --dark-color: #333;
+    --light-text-color: #ffffff;
+}
+
+html[data-theme='light'] body {
+    background-color: var(--light-color);
     color: var(--dark-color);
 }
 
-html[data-theme='dark'] .burger div {
+html[data-theme='light'] .nav-links a,
+html[data-theme='light'] .theme-toggle {
+    color: var(--dark-color);
+}
+
+html[data-theme='light'] .burger div {
     background-color: var(--dark-color);
 }
+
 
 * {
     margin: 0;
