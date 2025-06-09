@@ -60,7 +60,7 @@
     }
     
     .desktop-nav a {
-        color: white;
+        color: var(--light-text-color);
         font-weight: 500;
         transition: all 0.3s ease;
         font-family: var(--font-main);
@@ -101,7 +101,7 @@
     .theme-toggle {
         background: none;
         border: none;
-        color: white;
+        color: var(--light-text-color);
         font-size: 1.2rem;
         cursor: pointer;
         margin-left: 1rem;
@@ -143,7 +143,7 @@
     .burger div {
         width: 26px;
         height: 2px;
-        background-color: white;
+        background-color: var(--light-color);
         margin: 5px;
         transition: all 0.3s ease;
     }
@@ -151,7 +151,7 @@
     .theme-toggle {
         background: none;
         border: none;
-        color: white;
+        color: var(--light-text-color);
         font-size: 1.2rem;
         cursor: pointer;
         margin-left: 1rem;
@@ -177,7 +177,7 @@
         left: 0;
         width: 75%;
         height: calc(100vh - 90px);
-        background-color: white;
+        background-color: var(--light-color);
         z-index: 1500;
         display: flex;
         flex-direction: column;
@@ -210,7 +210,7 @@
     
     .close-nav:hover::before,
     .close-nav:hover::after {
-        background-color: #db2437;
+        background-color: var(--primary-color);
     }
     
     .close-nav::before,
@@ -219,7 +219,7 @@
         position: absolute;
         width: 22px;
         height: 3px;
-        background-color: #e63946;
+        background-color: var(--primary-color);
         transition: all 0.3s ease;
     }
     
