@@ -484,21 +484,20 @@ function initTheme() {
     if (!toggle) return;
 
     const stored = localStorage.getItem('theme');
-    if (stored === 'dark') {
-        document.documentElement.setAttribute('data-theme', 'dark');
-        toggle.innerHTML = '<i class="fas fa-sun"></i>';
+    if (stored === 'dark' || stored === 'light') {
+        document.documentElement.setAttribute('data-theme', stored);
+        toggle.innerHTML = stored === 'dark'
+            ? '<i class="fas fa-sun"></i>'
+            : '<i class="fas fa-moon"></i>';
     }
 
     toggle.addEventListener('click', () => {
-        const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-        if (isDark) {
-            document.documentElement.removeAttribute('data-theme');
-            localStorage.removeItem('theme');
-            toggle.innerHTML = '<i class="fas fa-moon"></i>';
-        } else {
-            document.documentElement.setAttribute('data-theme', 'dark');
-            localStorage.setItem('theme', 'dark');
-            toggle.innerHTML = '<i class="fas fa-sun"></i>';
-        }
+        const current = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+        const next = current === 'dark' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', next);
+        localStorage.setItem('theme', next);
+        toggle.innerHTML = next === 'dark'
+            ? '<i class="fas fa-sun"></i>'
+            : '<i class="fas fa-moon"></i>';
     });
 }
